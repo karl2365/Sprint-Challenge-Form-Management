@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Raleway&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Raleway, sans-serif;
+  color: #212121;
+  background-image: linear-gradient(
+    to right,
+    #bbdefb,
+    #b2dfdb
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Lato, sans-serif;
+  margin-bottom: 20px;
+}
+
+.form {
+  max-width: 450px;
+  margin: 50px auto;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  font-size: inherit;
+  font-family: inherit;
+  padding: 6px 12px;
+  background-color: #fafafa;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-family: inherit;
+  font-size: 14px;
+  background-color: #263238;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: #37474f;
+}
