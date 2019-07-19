@@ -25,8 +25,9 @@ const [data, setData] = useState([]);
         })
         .catch(e => {
           console.log('error', e.response);
-          // localStorage.removeItem("token");
+          localStorage.removeItem("token");
           history.push("/");
+          
         });
     }
   },[history]);
@@ -49,6 +50,7 @@ const [data, setData] = useState([]);
         onClick={() => {
           localStorage.removeItem("token");
           history.push("/");
+          window.location.reload();
         }}
       >
         Logout
