@@ -16,7 +16,7 @@
 
     Custom Hooks, so-called because you are building the hook yourself, allow you to apply non-visual behavior and stateful logic throughout your components by reusing the same hook over and over again. You can build a reusable custom hook for uses as varied as handling controlled inputs, managing event listeners, and watching for key presses.
 
-- [ ] Describe the process of retriving a token from a server and using that token in subsequent API calls.
+- [ ] Describe the process of retrieving a token from a server and using that token in subsequent API calls.
 
-    To retrieve a token you send some sort of validation information to the server, and it returns a token if the information is in fact valid/ authorized.  The token is stored on the client, usually in local storage or a cookie, and is later sent to the server as authrorization to access protected data.
+    To retrieve a token you send some sort of validation information to the server, and it returns a token if the information is in fact valid/ authorized.  The token is stored on the client, usually in local storage or a cookie, and is later sent to the server as authorization to access protected data.
 

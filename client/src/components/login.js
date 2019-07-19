@@ -58,6 +58,7 @@ export default withFormik({
   }),
   handleSubmit(values, formikBag) {
     const {setToken} = formikBag.props;
+    
     const url =
       "http://localhost:5000/api/register";
     axios
