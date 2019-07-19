@@ -1,7 +1,7 @@
 .friendHeader {
     display: flex;
     justify-content: center;
-    width: 90%;
+    /* width: 90%; */
     align-items: center;
     
 }
@@ -32,11 +32,11 @@
 }
 
 .friendList .friendAge {
-    width: 15%;
+    width: 55%;
 
 }
 .friendList .friendEmail {
-    width: 54%;
+    width: 44%;
 
 }
 .logoutButton {

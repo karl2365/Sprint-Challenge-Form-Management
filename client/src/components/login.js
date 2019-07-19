@@ -53,18 +53,17 @@ export default withFormik({
       .required()
   }),
   handleSubmit(values, formikBag) {
-      console.log(values);
     const url =
-      "http://localhost:5000/api/login";
+      "http://localhost:5000/api/register";
     axios
       .post(url, values)
       .then(response => {
-        console.log(response.data.payload);
-        localStorage.setItem("token", response.data.payload);
+        console.log('login Response', response);
+        localStorage.setItem("token", response.data.token);
         formikBag.props.history.push("/friends");
       })
       .catch(e => {
-        console.log(e.response);
+        console.log('login error', e.response);
       });
   }
 })(Login);

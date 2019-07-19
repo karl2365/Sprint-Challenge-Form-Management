@@ -5,68 +5,12 @@ import './component.css';
 
 
 function Friends({ history }) {
-const [friendsList, setFriendsList] = useState([]);
-const [newFriend, setNewFriend] = useState({});
-
-const handleChanges = e => {
-    setNewFriend({...newFriend, [e.target.name]: e.target.value})
-}
-
-const handleSubmit = e => {
-    e.preventDefault()
-    // console.log('new friend', newFriend)
- 
-    const token = localStorage.getItem("token");
-    const url =
-      "http://localhost:5000/api/friends";
-
-    if (token) {
-      axios
-        .post(url, newFriend,  {
-          headers: {
-            Authorization: `${token}` 
-          }
-        })
-        .then(response => {
-            console.log('response', response)
-            history.push('/friends')
-        })
-        .catch(e => {
-          console.log(e.response);
-         
-        });
-        axios
-        .get(url, {
-          headers: {
-            Authorization: `${token}` 
-          }
-        })
-        .then(response => {
-            console.log(response.data)
-          setFriendsList(response.data);
-        })
-        .catch(e => {
-          console.log(e.response);
-          localStorage.removeItem("token");
-          history.push("/");
-        });
-        setNewFriend({
-            name: '',
-            age: '',
-            email: ''
-        })
-    }
-
-
-}
-
-
-
+const [data, setData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const url =
-      "http://localhost:5000/api/friends";
+      "http://localhost:5000/api/restricted/data";
 
     if (token) {
       axios
@@ -76,28 +20,28 @@ const handleSubmit = e => {
           }
         })
         .then(response => {
-            console.log(response.data)
-          setFriendsList(response.data);
+            console.log('list', response)
+            setData(response.data);
         })
         .catch(e => {
-          console.log(e.response);
+          console.log('error', e.response);
           localStorage.removeItem("token");
           history.push("/");
         });
     }
   }, [history]);
-  if (!friendsList) return <div>Loading</div>
+  if (!data) return <div>Loading</div>
   return (
     <>
       <div className="friendHeader">
-          <p>My Friends</p>
+          <p>My Favorite Dishes</p>
       </div>
    
-      {friendsList.map(friend => 
+      {data.map(data => 
       <div className="friendList">
-        <p className="friendName">Name: {friend.name}</p>
-        <p className="friendAge">Age: {friend.age}</p>
-        <p className="friendEmail">Email: {friend.email}</p>
+        <p className="friendName">Course: {data.course}</p>
+        <p className="friendAge">Title: {data.name}</p>
+        <p className="friendEmail">technique: {data.technique}</p>
       </div>)}
 
       <button
@@ -109,15 +53,6 @@ const handleSubmit = e => {
       >
         Logout
       </button>
-        <form className="form" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <h2>Add New Friend</h2>
-                <input className="input" type='text' name='name' placeholder='name' onChange={handleChanges} value={newFriend.name} />
-                <input className="input" type='text' name='age' placeholder='age'  onChange={handleChanges} value={newFriend.age}  />
-                <input className="input" type='email' name='email' placeholder='email'  onChange={handleChanges}  value={newFriend.email} />
-                <button className="btn" type='submit'>submit</button>
-            </div>
-        </form>
 
     </>
   );
