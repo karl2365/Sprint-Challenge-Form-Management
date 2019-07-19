@@ -4,11 +4,11 @@ import './component.css';
 
 
 
-function Friends({ history }) {
+function Meals({ history }) {
 const [data, setData] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = JSON.parse(localStorage.getItem("token"));
     const url =
       "http://localhost:5000/api/restricted/data";
 
@@ -16,7 +16,7 @@ const [data, setData] = useState([]);
       axios
         .get(url, {
           headers: {
-            Authorization: `${token}` 
+            Authorization: token 
           }
         })
         .then(response => {
@@ -25,11 +25,11 @@ const [data, setData] = useState([]);
         })
         .catch(e => {
           console.log('error', e.response);
-          localStorage.removeItem("token");
+          // localStorage.removeItem("token");
           history.push("/");
         });
     }
-  }, [history]);
+  },[history]);
   if (!data) return <div>Loading</div>
   return (
     <>
@@ -41,7 +41,7 @@ const [data, setData] = useState([]);
       <div className="friendList">
         <p className="friendName">Course: {data.course}</p>
         <p className="friendAge">Title: {data.name}</p>
-        <p className="friendEmail">technique: {data.technique}</p>
+        <p className="friendEmail">Technique: {data.technique}</p>
       </div>)}
 
       <button
@@ -58,4 +58,4 @@ const [data, setData] = useState([]);
   );
 }
 
-export default Friends;
+export default Meals;

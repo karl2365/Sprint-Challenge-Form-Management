@@ -70,6 +70,7 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 2px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
 .btn:hover {

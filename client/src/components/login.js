@@ -3,12 +3,16 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
-function Login({ touched, errors, }) {
-  const token = localStorage.getItem("token");
+function Login({ touched, errors, token, setToken }) {
+  // const token = localStorage.getItem('token');
+  // const [token, setToken] = useLocalStorage("token", "");
 
+  // setToken('my token');
+  // console.log('token', token);
   if (token) {
-    return <Redirect to="/friends" />;
+    return <Redirect to="/meals" />;
   }
 
   return (
@@ -53,14 +57,16 @@ export default withFormik({
       .required()
   }),
   handleSubmit(values, formikBag) {
+    const {setToken} = formikBag.props;
     const url =
       "http://localhost:5000/api/register";
     axios
       .post(url, values)
       .then(response => {
+        // localStorage.setItem("token", response.data.token);
+        setToken(response.data.token);
+        formikBag.props.history.push("/meals");
         console.log('login Response', response);
-        localStorage.setItem("token", response.data.token);
-        formikBag.props.history.push("/friends");
       })
       .catch(e => {
         console.log('login error', e.response);

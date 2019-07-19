@@ -7,8 +7,9 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/login";
-import Friends from "./components/friends";
+import Meals from "./components/Meals";
 import "./styles.css";
+import{ useLocalStorage} from './hooks/useLocalStorage'; 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -24,11 +25,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 function App() {
+  const [token, setToken] = useLocalStorage('token');
+
   return (
     <div className="App" style={{ padding: 30 }}>
  
-      <Route exact path="/" component={Login} />
-      <PrivateRoute exact path="/friends" component={Friends} />
+      <Route exact path="/" render={(props) => <Login {...props} setToken={setToken} token={token} /> } />
+      <PrivateRoute exact path="/meals" component={Meals} />
     
  
     </div>
