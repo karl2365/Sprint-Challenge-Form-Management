@@ -1,0 +1,47 @@
+.friendHeader {
+    display: flex;
+    justify-content: center;
+    /* width: 90%; */
+    align-items: center;
+    
+}
+.friendHeader p {
+    height: 50px;
+    font-size: 2rem;
+    background: #00000033;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+.friendList {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    width: 90%;
+}
+
+.friendList p {
+    margin: 10px;
+    background: #00000033;
+    padding: 10px;
+    border-radius: 8px;
+}
+.friendList .friendName {
+    width: 30%;
+}
+
+.friendList .friendAge {
+    width: 55%;
+
+}
+.friendList .friendEmail {
+    width: 44%;
+
+}
+.logoutButton {
+    margin: 10px;
+}
+input {
+    margin: 10px 0;
+}
